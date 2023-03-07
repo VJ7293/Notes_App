@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DataService from "../services/notesServices";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "../Modal/modal";
 
 const PagNotes = ({
   id,
+  setNotes,
   setNoteId,
   getNoteId,
   notes,
   posts,
   loading,
-  getNotes,
 }) => {
   useEffect(() => {
     getNotes();
   }, []);
 
-  // const getNotes = async () => {
-  //   const data = await DataService.getAllNotes();
+  const getNotes = async () => {
+    const data = await DataService.getAllNotes();
 
-  //   console.log(data.docs);
-  //   setNotes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  // };
+    console.log(data.docs);
+    setNotes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
 
   const deleteHandler = async (id) => {
     await DataService.deleteNote(id);
