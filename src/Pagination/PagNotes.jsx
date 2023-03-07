@@ -4,7 +4,7 @@ import DataService from "../services/notesServices";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "../Modal/modal";
-import EditIcon from "@mui/icons-material/EditOutlined";
+
 const PagNotes = ({
   id,
   setNoteId,
@@ -52,17 +52,17 @@ const PagNotes = ({
               click to Get Notes
             </button> */}
             {/*Notes not found */}
-            <p className=" mx-56 p-20  text-center font-signature8 font-extrabold text-3xl ">{`Notes-${notes.length} no notes Found Fill the note form`}</p>
+            <p className=" md:mx-56  p-20 md:text-center font-signature8 font-extrabold text-3xl ">{`Notes-${notes.length} no notes Found Fill the note form`}</p>
           </div>
         ) : (
           ""
         )}
       </div>
-      <div className="m-8 flex justify-between sm:grid grid-cols-4 text-lg font-signature12 sm:gap-4  ">
+      <div className="md:m-8     md:grid grid-cols-row sm:grid grid-cols-4 gap-4 text-lg font-signature12 sm:gap-4  ">
         {posts.map((note, index) => (
           <div className="  ">
             <div
-              className=" shadow-2xl shadow-black hover:text-slate-600  hover:bg-slate-200  overflow-hidden  truncate rounded-2xl p-20 gap-4"
+              className="grid grid-flow-row mb-8 shadow-2xl shadow-black hover:text-slate-600  hover:bg-slate-200  overflow-hidden  truncate rounded-2xl p-20 gap-4"
               key={note.id}
             >
               {/* {index + 1} */}

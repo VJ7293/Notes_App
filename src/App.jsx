@@ -14,7 +14,7 @@ function App() {
     setNoteId(id);
   };
   return (
-    <div className=" rounded-3xl m-5 bg-gradient-to-tr from-blue-500 via-blue-900 to-blue-300  drop-shadow-2xl filter-none  border  drop-shadow-3xl shadow-inner ">
+    <div className="overflow-auto rounded-3xl m-5 bg-gradient-to-tr from-blue-500 via-blue-900 to-blue-300  drop-shadow-2xl filter-none  border  drop-shadow-3xl shadow-inner ">
       <div className=" ">
         <div className=" ">
           {" "}
