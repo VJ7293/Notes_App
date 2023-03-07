@@ -4,19 +4,27 @@ import "react-toastify/dist/ReactToastify.css";
 import DataService from "./../services/notesServices";
 import EditIcon from "@mui/icons-material/EditOutlined";
 
-export default function Modal({ setNoteId, id, getNotes }) {
+export default function Modal({ setNoteId, setNotes, id, getNotes }) {
   const [showModal, setShowModal] = React.useState(false);
   const [title, setTitle] = useState("");
   const [tagLine, setTagLine] = useState("");
   const [body, setBody] = useState("");
   const [message, setMessage] = useState({ error: false, msg: "" });
 
-  useEffect(() => {
-    getNotes();
-  }, []);
-
   // toast
   const notify = () => toast("note successfully added");
+
+  // useEffect(() => {
+  //   getNotes();
+  // }, []);
+
+  // const getNotes = async () => {
+  //   const data = await DataService.getAllNotes();
+
+  //   console.log(data.docs);
+  //   setNotes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -79,6 +87,7 @@ export default function Modal({ setNoteId, id, getNotes }) {
     if (id !== undefined && id !== "") {
       editHandler();
     }
+    getNotes();
   }, [id]);
   return (
     <div className="">
@@ -153,7 +162,7 @@ export default function Modal({ setNoteId, id, getNotes }) {
                         type="submit"
                         value="save"
                         onClick={() => {
-                          notify(), getNotes();
+                          getNotes();
                         }}
                         className="ml-52 text-2xl text-blue-500 font-extrabold  font-signature10 text-center  rounded-lg  hover:text-slate-600 active:text-slate-700 focus:outline-no shadow-inner outline-none drop-shadow-3xl  "
                       />
