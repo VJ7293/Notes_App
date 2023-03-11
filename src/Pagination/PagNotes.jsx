@@ -13,26 +13,22 @@ const PagNotes = ({
   notes,
   posts,
   loading,
-  getNotes,
 }) => {
   useEffect(() => {
     getNotes();
   }, []);
 
-  // const getNotes = async () => {
-  //   const data = await DataService.getAllNotes();
+  const getNotes = async () => {
+    const data = await DataService.getAllNotes();
 
-  //   console.log(data.docs);
-  //   setNotes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  // };
+    console.log(data.docs);
+    setNotes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
 
   const deleteHandler = async (id) => {
     await DataService.deleteNote(id);
     getNotes();
   };
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
 
   // toast
   const notify = () => toast("note recieved  ");
@@ -61,14 +57,14 @@ const PagNotes = ({
       </div>
       <div className="md:m-8     md:grid grid-cols-row sm:grid grid-cols-4 gap-4 text-lg font-signature12 sm:gap-4  ">
         {posts.map((note, index) => (
-          <div key={index}>
+          <div className="  " key={index}>
             <div
+              className="grid grid-flow-row mb-8 shadow-2xl shadow-black hover:text-slate-600  hover:bg-slate-200  overflow-hidden  truncate rounded-2xl p-20 gap-4"
               key={note.id}
-              className=" shadow-2xl shadow-black hover:text-slate-600  hover:bg-slate-200  overflow-hidden  truncate rounded-2xl p-20 gap-4"
             >
               {/* {index + 1} */}
               <h1 className="font-extrabold text-center">My NOtes</h1>
-              <span key={id} className="font-thin">
+              <span key={note.id} className="font-thin">
                 <span className="text-extrabold text-2xl"> {note.title}</span>
                 <br />
                 <span className="text-thin text-lg"> {note.tagLine}</span>
@@ -77,16 +73,14 @@ const PagNotes = ({
               </span>
 
               <div>
-                <div className="mr-10">
-                  <Modal
-                    id={id}
-                    setNoteId={setNoteId}
-                    getNotes={getNotes}
-                    onClick={(e) => {
-                      getNoteId(note.id);
-                    }}
-                  />
-                </div>
+                <button
+                  className="mr-10"
+                  onClick={(e) => {
+                    getNoteId(note.id);
+                  }}
+                >
+                  <Modal id={id} setNoteId={setNoteId} getNotes={getNotes} />
+                </button>{" "}
                 <button
                   onClick={(e) => deleteHandler(note.id)}
                   className="ml-5  mt-2  p-2 font-signature11 shadow-inner-2xl drop-shadow-2xl hover:bg-slate-300 rounded-full cursor-pointer"
