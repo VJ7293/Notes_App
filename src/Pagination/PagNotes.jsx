@@ -59,7 +59,7 @@ const PagNotes = ({
           ""
         )}
       </div>
-      <div className=" ml-5 sm   md:grid grid-cols-row-3 gap-4 text-lg font-signature12 sm:gap-4  ">
+      <div className=" ml-5   md:grid grid-cols-3 gap-4 text-lg font-signature12 sm:gap-4  ">
         {posts.map((note, index) => (
           <div className="  " key={index}>
             <div
@@ -93,7 +93,7 @@ const PagNotes = ({
                 </span>{" "}
                 <button
                   onClick={(e) => deleteHandler(note.id)}
-                  className=" font-signature11 shadow-inner-2xl drop-shadow-2xl hover:bg-slate-300 rounded-full cursor-pointer"
+                  className=" shadow-inner  text-white active:bg-slate-700 font-bold uppercase text-sm px-6 py-3  hover:shadow-lg outline-none focus:outline-none  mb-1 ease-linear transition-all duration-150 font-signature11 shadow-inner-2xl drop-shadow-2xl hover:bg-slate-400 rounded-full cursor-pointer"
                 >
                   <DeleteIcon onClick={notify2} />
                 </button>
