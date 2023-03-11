@@ -100,7 +100,7 @@ export default function Modal({ setNoteId, setNotes, id, getNotes }) {
       </button>
       {showModal ? (
         <>
-          <div className="flex justify-center blue-glassmorphism items-center  overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <div className="flex justify-center blue-glassmorphism items-center  fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-sm">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PagNotes from "./PagNotes";
 import Pagination from "./Pagination";
 import CreateArea from "../components/CreateArea";
+
 import "../App.css";
 import DataService from "../services/notesServices";
 

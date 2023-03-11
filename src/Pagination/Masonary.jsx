@@ -4,7 +4,7 @@ import DataService from "../services/notesServices";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "../Modal/modal";
-
+import Masonry from "react-masonry-css";
 const PagNotes = ({
   id,
   setNotes,
@@ -18,6 +18,13 @@ const PagNotes = ({
   useEffect(() => {
     getNotes();
   }, []);
+
+  const breakpointColumnsObj = {
+    default: 4,
+    1100: 3,
+    700: 2,
+    500: 1,
+  };
 
   // const getNotes = async () => {
   //   const data = await DataService.getAllNotes();
@@ -39,7 +46,7 @@ const PagNotes = ({
   const notify2 = () => toast("note deleted successFully");
 
   return (
-    <div className="m-2 p-auto  text-slate-400   ">
+    <div className="  text-slate-400   ">
       <div className="">
         {notes.length === 0 ? (
           <div>
@@ -59,30 +66,31 @@ const PagNotes = ({
           ""
         )}
       </div>
-      <div className=" ml-5 sm   md:grid grid-cols-row-3 gap-4 text-lg font-signature12 sm:gap-4  ">
-        {posts.map((note, index) => (
-          <div className="  " key={index}>
-            <div
-              className="mb-10 shadow-2xl shadow-black hover:text-slate-600  hover:bg-slate-200   hover:text-clip rounded-2xl p-20 gap-4"
-              key={note.id}
-            >
-              {/* {index + 1} */}
-
-              <blockquote
-                key={note.id}
-                className="font-thin break-words text-ellipsis "
-              >
-                <p className="text-extrabold text-2xl break-keep">
-                  {" "}
-                  {note.title}
-                </p>
-                <br />
-                <p className="text-thin text-lg break-keep"> {note.tagLine}</p>
-                <br />
-                <p className="break-words"> {note.body}</p>
-              </blockquote>
-
-              <div className="flex justify-between items-center ml-5">
+      <div className="p-4 ml-5 rounded-lg font-signature12  text-ellipsis overflow-hidden ">
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid text-ellipsis overflow-hidden "
+          columnClassName="my-masonry-grid_column"
+        >
+          {/* array of JSX items */}
+          <div className="break-words">
+            {posts.map((note, index) => (
+              <div className="" key={note.id}>
+                {/* {index + 1} */}
+                <h1 className="font-extrabold text-center">My NOtes</h1>
+                <blockquote key={note.id} className="font-thin">
+                  <p className="text-extrabold text-2xl text-clip overflow-hidden">
+                    {" "}
+                    {note.title}
+                  </p>
+                  <br />
+                  <p className="text-thin text-lg text-clip overflow-hidden">
+                    {" "}
+                    {note.tagLine}
+                  </p>
+                  <br />
+                  <p className="text-clip overflow-hidden"> {note.body}</p>
+                </blockquote>
                 <span
                   className=""
                   onClick={(e) => {
@@ -98,9 +106,9 @@ const PagNotes = ({
                   <DeleteIcon onClick={notify2} />
                 </button>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
+        </Masonry>
       </div>
     </div>
   );

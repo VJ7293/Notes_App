@@ -76,7 +76,7 @@ const NotesEdit = ({ id, setNoteId, notes, getNotes }) => {
   }, [id]);
 
   return (
-    <div className="m-20">
+    <div className=" mr-16">
       <div className="        ">
         {message ? message.mgs : message.err}
         <div className=" flex justify-center outline-none white   ">
