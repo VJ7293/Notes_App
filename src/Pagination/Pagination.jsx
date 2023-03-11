@@ -16,11 +16,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
               key={number}
               className="products_single shadow-2xl shadow-black"
             >
-              <a
-                onClick={() => paginate(number)}
-                href="!#"
-                className="page-link"
-              >
+              <a onClick={() => paginate(number)} className="page-link">
                 {number}
               </a>
             </li>

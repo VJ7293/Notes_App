@@ -13,22 +13,26 @@ const PagNotes = ({
   notes,
   posts,
   loading,
+  getNotes,
 }) => {
   useEffect(() => {
     getNotes();
   }, []);
 
-  const getNotes = async () => {
-    const data = await DataService.getAllNotes();
+  // const getNotes = async () => {
+  //   const data = await DataService.getAllNotes();
 
-    console.log(data.docs);
-    setNotes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  };
+  //   console.log(data.docs);
+  //   setNotes(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  // };
 
   const deleteHandler = async (id) => {
     await DataService.deleteNote(id);
     getNotes();
   };
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
 
   // toast
   const notify = () => toast("note recieved  ");
@@ -57,9 +61,9 @@ const PagNotes = ({
       </div>
       <div className="md:m-8     md:grid grid-cols-row sm:grid grid-cols-4 gap-4 text-lg font-signature12 sm:gap-4  ">
         {posts.map((note, index) => (
-          <div className="  ">
+          <div className="  " key={index}>
             <div
-              className="grid grid-flow-row mb-8 shadow-2xl shadow-black hover:text-slate-600  hover:bg-slate-200  overflow-hidden  truncate rounded-2xl p-20 gap-4"
+              className=" shadow-2xl shadow-black hover:text-slate-600  hover:bg-slate-200  overflow-hidden  truncate rounded-2xl p-20 gap-4"
               key={note.id}
             >
               {/* {index + 1} */}
@@ -72,9 +76,9 @@ const PagNotes = ({
                 <span> {note.body}</span>
               </span>
 
-              <div className="flex justify-between items-center">
+              <div>
                 <span
-                  className=" "
+                  className="flex justify-between"
                   onClick={(e) => {
                     getNoteId(note.id);
                   }}
