@@ -72,18 +72,18 @@ const PagNotes = ({
                 <span> {note.body}</span>
               </span>
 
-              <div>
-                <button
-                  className="mr-10"
+              <div className="flex justify-between items-center">
+                <span
+                  className=" "
                   onClick={(e) => {
                     getNoteId(note.id);
                   }}
                 >
                   <Modal id={id} setNoteId={setNoteId} getNotes={getNotes} />
-                </button>{" "}
+                </span>{" "}
                 <button
                   onClick={(e) => deleteHandler(note.id)}
-                  className="ml-5  mt-2  p-2 font-signature11 shadow-inner-2xl drop-shadow-2xl hover:bg-slate-300 rounded-full cursor-pointer"
+                  className=" font-signature11 shadow-inner-2xl drop-shadow-2xl hover:bg-slate-300 rounded-full cursor-pointer"
                 >
                   <DeleteIcon onClick={notify2} />
                 </button>
