@@ -11,7 +11,6 @@ const NotesEdit = ({ id, setNoteId, notes, getNotes }) => {
 
   // toast
   const notify = () => toast("note successfully added");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -73,7 +72,6 @@ const NotesEdit = ({ id, setNoteId, notes, getNotes }) => {
     console.log("The id here is : ", id);
     if (id !== undefined && id !== "") {
       editHandler();
-      getNotes();
     }
   }, [id]);
 
