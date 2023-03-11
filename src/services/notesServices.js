@@ -31,6 +31,10 @@ class NotesDataService {
     const noteDoc = doc(db, "notes", id);
     return getDoc(noteDoc);
   };
+  getPinned = (id) => {
+    const noteDoc = doc(db, "pinned", id);
+    return getDoc(noteDoc);
+  };
 }
 
 const DataService = new NotesDataService();

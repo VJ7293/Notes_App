@@ -12,9 +12,6 @@ const NotesEdit = ({ id, setNoteId, notes, getNotes }) => {
   // toast
   const notify = () => toast("note successfully added");
 
-  useEffect(() => {
-    getNotes();
-  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
